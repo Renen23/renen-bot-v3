@@ -26,7 +26,8 @@ export default {
     }
 
     const text = fullArgs?.trim();
-    if (!text) {
+
+    if (!text && !isImage && !isVideo) {
       throw new InvalidParameterError(
         "Escreva a mensagem que deve ser enviada. Exemplo: /todos Oi, pessoal!",
       );
@@ -50,16 +51,18 @@ export default {
         const mediaType = isImage ? "image" : "video";
         await socket.sendMessage(
           remoteJid,
-          { [mediaType]: buffer, caption: text, mentionAll: true },
+          { [mediaType]: buffer, caption: text || "", mentionAll: true },
           { quoted: webMessage },
         );
         return;
       } catch {
-        await socket.sendMessage(
-          remoteJid,
-          { text, mentionAll: true },
-          { quoted: webMessage },
-        );
+        if (text) {
+          await socket.sendMessage(
+            remoteJid,
+            { text, mentionAll: true },
+            { quoted: webMessage },
+          );
+        }
         return;
       }
     }

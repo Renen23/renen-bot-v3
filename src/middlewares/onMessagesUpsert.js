@@ -62,7 +62,7 @@ export async function onMessagesUpsert({ socket, messages, startProcess }) {
       }
 
       if (!groupActive) {
-        const text = (webMessage?.message?.conversation || webMessage?.message?.extendedTextMessage?.text || "").trim().toLowerCase();
+        const text = (webMessage?.message?.conversation || webMessage?.message?.extendedTextMessage?.text || webMessage?.message?.imageMessage?.caption || webMessage?.message?.videoMessage?.caption || "").trim().toLowerCase();
         const groupPrefix = getPrefix(webMessage.key.remoteJid);
         const isAllowed = text.startsWith(`${groupPrefix}todos`) || text.startsWith(`${groupPrefix}on`) || text === "on" || text === "todos";
         if (!isAllowed) {
