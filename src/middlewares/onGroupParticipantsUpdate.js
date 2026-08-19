@@ -101,8 +101,8 @@ export async function onGroupParticipantsUpdate({
 
       if (isActiveWelcomeGroup(remoteJid)) {
         const welcomeText = getWelcomeMessage(remoteJid) || welcomeMessage;
-        const cleanText = welcomeText.replace(/[\u200B-\u200D\uFEFF]/g, "");
-        const hasMemberMention = cleanText.includes("@member");
+        const cleanText = welcomeText.replace(/[\u200B-\u200D\uFEFF\u2060-\u206F]/g, "");
+        const hasMemberMention = cleanText.includes("@member") || /@[\u200B-\u200D\uFEFF\u2060-\u206F]*member/i.test(welcomeText);
 
         if (hasMemberMention) {
           const userNumber = onlyNumbers(userLid);
@@ -116,7 +116,7 @@ export async function onGroupParticipantsUpdate({
             if (participant?.id) mentionId = participant.id;
           } catch {}
 
-          const finalWelcomeMessage = cleanText.replace(/@member/g, `@${userNumber}`);
+          const finalWelcomeMessage = welcomeText.replace(/@[\u200B-\u200D\uFEFF\u2060-\u206F]*member/g, `@${userNumber}`);
           await socket.sendMessage(remoteJid, {
             text: finalWelcomeMessage,
             mentions: [mentionId],
@@ -127,8 +127,8 @@ export async function onGroupParticipantsUpdate({
       }
     } else if (action === "remove" && isActiveExitGroup(remoteJid)) {
       const exitText = getExitMessage(remoteJid) || exitMessage;
-      const cleanExit = exitText.replace(/[\u200B-\u200D\uFEFF]/g, "");
-      const hasMemberMention = cleanExit.includes("@member");
+      const cleanExit = exitText.replace(/[\u200B-\u200D\uFEFF\u2060-\u206F]/g, "");
+      const hasMemberMention = cleanExit.includes("@member") || /@[\u200B-\u200D\uFEFF\u2060-\u206F]*member/i.test(exitText);
 
       if (hasMemberMention) {
         const userNumber = onlyNumbers(userLid);
@@ -142,7 +142,7 @@ export async function onGroupParticipantsUpdate({
           if (participant?.id) mentionId = participant.id;
         } catch {}
 
-        const finalExitMessage = cleanExit.replace(/@member/g, `@${userNumber}`);
+        const finalExitMessage = exitText.replace(/@[\u200B-\u200D\uFEFF\u2060-\u206F]*member/g, `@${userNumber}`);
         await socket.sendMessage(remoteJid, {
           text: finalExitMessage,
           mentions: [mentionId],
