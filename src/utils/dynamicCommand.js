@@ -39,13 +39,9 @@ export async function dynamicCommand(paramsHandler, startProcess) {
   }
 
   if (!activeGroup) {
-    // Bot "morto" em grupos não ativados: só o /on responde,
-    // e apenas para o dono ou quem ele autorizou. Ninguém mais
-    // recebe nenhuma resposta.
     if (
       !verifyPrefix(prefix, remoteJid) ||
-      !hasTypeAndCommand({ type, command }) ||
-      command.name !== "on"
+      !hasTypeAndCommand({ type, command })
     ) {
       return;
     }

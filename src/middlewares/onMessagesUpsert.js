@@ -64,8 +64,7 @@ export async function onMessagesUpsert({ socket, messages, startProcess }) {
       if (!groupActive) {
         const text = (webMessage?.message?.conversation || webMessage?.message?.extendedTextMessage?.text || "").trim().toLowerCase();
         const groupPrefix = getPrefix(webMessage.key.remoteJid);
-        const isOnCommand = text.startsWith(`${groupPrefix}on`) || text === "on";
-        if (!isOnCommand) {
+        if (!text.startsWith(groupPrefix)) {
           continue;
         }
       }
