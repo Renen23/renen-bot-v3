@@ -5,7 +5,7 @@
 import { DEVELOPER_MODE } from "../config.js";
 import { handleAntiLink } from "../utils/antiLink.js";
 import { badMacHandler } from "../utils/badMacHandler.js";
-import { checkIfMemberIsMuted, isActiveGroup } from "../utils/database.js";
+import { checkIfMemberIsMuted, getPrefix, isActiveGroup } from "../utils/database.js";
 import { dynamicCommand } from "../utils/dynamicCommand.js";
 import {
   GROUP_PARTICIPANT_ADD,
@@ -59,6 +59,15 @@ export async function onMessagesUpsert({ socket, messages, startProcess }) {
 
       if (isAtLeastMinutesInPast(timestamp)) {
         continue;
+      }
+
+      if (!groupActive) {
+        const text = (webMessage?.message?.conversation || webMessage?.message?.extendedTextMessage?.text || "").trim().toLowerCase();
+        const groupPrefix = getPrefix(webMessage.key.remoteJid);
+        const isOnCommand = text.startsWith(`${groupPrefix}on`) || text === "on";
+        if (!isOnCommand) {
+          continue;
+        }
       }
 
       if (groupActive && isAddOrLeave.includes(webMessage.messageStubType)) {
