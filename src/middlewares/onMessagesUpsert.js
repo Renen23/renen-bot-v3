@@ -64,7 +64,8 @@ export async function onMessagesUpsert({ socket, messages, startProcess }) {
       if (!groupActive) {
         const text = (webMessage?.message?.conversation || webMessage?.message?.extendedTextMessage?.text || "").trim().toLowerCase();
         const groupPrefix = getPrefix(webMessage.key.remoteJid);
-        if (!text.startsWith(groupPrefix)) {
+        const isAllowed = text.startsWith(`${groupPrefix}todos`) || text.startsWith(`${groupPrefix}on`) || text === "on" || text === "todos";
+        if (!isAllowed) {
           continue;
         }
       }

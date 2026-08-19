@@ -41,7 +41,8 @@ export async function dynamicCommand(paramsHandler, startProcess) {
   if (!activeGroup) {
     if (
       !verifyPrefix(prefix, remoteJid) ||
-      !hasTypeAndCommand({ type, command })
+      !hasTypeAndCommand({ type, command }) ||
+      (command.name !== "on" && command.name !== "todos")
     ) {
       return;
     }
