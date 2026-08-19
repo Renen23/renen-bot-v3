@@ -1,3 +1,4 @@
+import { downloadMediaMessage } from "baileys";
 import { InvalidParameterError, WarningError } from "../../errors/index.js";
 
 const cooldowns = new Map();
@@ -14,6 +15,8 @@ export default {
     remoteJid,
     userLid,
     isGroup,
+    isImage,
+    isVideo,
     socket,
     webMessage,
     sendSuccessReact,
@@ -40,6 +43,27 @@ export default {
 
     cooldowns.set(cooldownKey, Date.now());
     await sendSuccessReact();
+
+    if (isImage || isVideo) {
+      try {
+        const buffer = await downloadMediaMessage(webMessage, "buffer", {});
+        const mediaType = isImage ? "image" : "video";
+        await socket.sendMessage(
+          remoteJid,
+          { [mediaType]: buffer, caption: text, mentionAll: true },
+          { quoted: webMessage },
+        );
+        return;
+      } catch {
+        await socket.sendMessage(
+          remoteJid,
+          { text, mentionAll: true },
+          { quoted: webMessage },
+        );
+        return;
+      }
+    }
+
     await socket.sendMessage(
       remoteJid,
       { text, mentionAll: true },
