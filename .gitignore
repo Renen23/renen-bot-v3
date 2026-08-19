@@ -1,0 +1,6 @@
+node_modules/
+.env
+database/
+assets/auth/
+assets/temp/
+*.log

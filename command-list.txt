@@ -1,0 +1,36 @@
+1 | admin | /abrir | ${PREFIX}abrir | Abre o grupo.
+2 | admin | /adv | ${PREFIX}adv @usuario 30m | Silencia um usuário por um tempo e desilencia sozinho (30m, 2h, 1d...).
+3 | admin | /anti-link | ${PREFIX}anti-link (1/0) | Ativo/desativo o bloqueio de links no grupo (apaga o link, dá advertência e remove no limite).
+4 | admin | /ban | ${PREFIX}ban @marcar_membro 
+
+ou 
+
+${PREFIX}ban (mencionando uma mensagem) | Removo um membro do grupo
+5 | admin | /block-wpp | ${PREFIX}block-wpp <telefone> | Bloqueia um número no WhatsApp do bot
+6 | admin | /confiavel | ${PREFIX}confiavel @usuario | ${PREFIX}confiavel remover @usuario | ${PREFIX}confiavel lista | Adiciona/remove pessoas que podem enviar links sem levar restrição.
+7 | admin | /delete | ${PREFIX}delete (mencione uma mensagem) | Excluo mensagens
+8 | admin | /exit | ${PREFIX}exit (1/0) | Ativo/desativo o recurso de envio de mensagem quando alguém sai do grupo.
+9 | admin | /fechar | ${PREFIX}fechar | Fecha o grupo.
+10 | admin | /limpar-chat | ${PREFIX}limpar-chat | Limpa o histórico de mensagens do grupo.
+11 | admin | /link-grupo | ${PREFIX}link-grupo | Obtém o link do grupo
+12 | admin | /listagrupo | ${PREFIX}listagrupo | Lista os grupos ativos e apresenta o respetivo link quando disponível.
+13 | admin | /mute | ${PREFIX}mute @usuario (ou responda à mensagem) | ${PREFIX}mute @usuario 30m | Silencia um usuário no grupo (apaga as mensagens dele). Use com tempo opcional (ex: /mute @x 30m) para desilenciar sozinho.
+14 | admin | /off | ${PREFIX}off | Desativa o bot no grupo
+15 | admin | /on | ${PREFIX}on | Ativa o bot no grupo
+16 | admin | /painel | ${PREFIX}painel | Envia no seu privado o painel com o status e os comandos do grupo.
+17 | admin | /promover | ${PREFIX}promover @usuario | Promove um usuário a administrador do grupo
+18 | admin | /rebaixar | ${PREFIX}rebaixar @usuario | Rebaixa um administrador para membro comum
+19 | admin | /set-exit | ${PREFIX}set-exit <mensagem com @member> | Altera a mensagem de saída deste grupo.
+20 | admin | /set-name | ${PREFIX}set-name novo nome do grupo | Altera o nome do grupo e salva o nome antigo
+21 | admin | /set-welcome | ${PREFIX}set-welcome <mensagem com @member> | Altera a mensagem de boas-vindas deste grupo.
+22 | admin | /unmute | ${PREFIX}unmute @usuario | Desativa o mute de um membro do grupo
+23 | admin | /unwarn | (sem usage) | Remove ou lista advertências válidas.
+24 | admin | /warn-reactivate | (sem usage) | Reativa uma advertência inválida.
+25 | admin | /warn | (sem usage) | Aplica advertência a um membro.
+26 | admin | /welcome | ${PREFIX}welcome (1/0) | Ativo/desativo o recurso de boas-vindas no grupo.
+27 | member | /help | ${PREFIX}help [comando] | Apresenta os comandos, a forma de utilização e as permissões.
+28 | member | /menu | ${PREFIX}menu | Menu de comandos
+29 | member | /meu-lid | ${PREFIX}meu-lid | Retorna o LID da pessoa
+30 | member | /ping | ${PREFIX}ping | Verificar se o bot está online, o tempo de resposta e o tempo de atividade.
+31 | owner | /adm | ${PREFIX}adm | ${PREFIX}adm @usuario | ${PREFIX}adm rm @usuario | Painel de quem pode usar os comandos do bot no grupo (só o dono gerencia).
+32 | owner | /set-prefix | ${PREFIX}set-prefix = | Mudo o prefixo de uso dos meus comandos

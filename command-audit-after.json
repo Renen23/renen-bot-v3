@@ -1,0 +1,592 @@
+{
+  "totalFiles": 32,
+  "rows": [
+    {
+      "category": "admin",
+      "file": "admin/abrir.js",
+      "name": "abrir",
+      "aliases": [
+        "abrir",
+        "abri",
+        "abre",
+        "abrir-grupo",
+        "abri-grupo",
+        "abre-grupo",
+        "open",
+        "open-group"
+      ],
+      "usage": "${PREFIX}abrir",
+      "description": "Abre o grupo."
+    },
+    {
+      "category": "admin",
+      "file": "admin/adv.js",
+      "name": "adv",
+      "aliases": [
+        "adv",
+        "tmpmute",
+        "tempomute",
+        "mute-temp",
+        "mute-temporario",
+        "timemute"
+      ],
+      "usage": "${PREFIX}adv @usuario 30m",
+      "description": "Silencia um usuário por um tempo e desilencia sozinho (30m, 2h, 1d...)."
+    },
+    {
+      "category": "admin",
+      "file": "admin/antilink.js",
+      "name": "antilink",
+      "aliases": [
+        "antilink",
+        "anti-link",
+        "antilinks",
+        "anti-links",
+        "bloquear-links"
+      ],
+      "usage": "${PREFIX}antilink (1/0)",
+      "description": "Ativo/desativo o bloqueio de links no grupo (apaga o link, dá advertência e remove no limite)."
+    },
+    {
+      "category": "admin",
+      "file": "admin/ban.js",
+      "name": "ban",
+      "aliases": [
+        "ban",
+        "kick"
+      ],
+      "usage": "${PREFIX}ban @marcar_membro \n\nou \n\n${PREFIX}ban (mencionando uma mensagem)",
+      "description": "Removo um membro do grupo"
+    },
+    {
+      "category": "admin",
+      "file": "admin/blockwpp.js",
+      "name": "blockwpp",
+      "aliases": [
+        "blockwpp",
+        "block-wpp",
+        "blok-wpp",
+        "bloquear-wpp"
+      ],
+      "usage": "${PREFIX}blockwpp <telefone>",
+      "description": "Bloqueia um número no WhatsApp do bot"
+    },
+    {
+      "category": "admin",
+      "file": "admin/confiavel.js",
+      "name": "confiavel",
+      "aliases": [
+        "confiavel",
+        "confiaveis",
+        "parceria",
+        "trusted",
+        "liberar-link",
+        "permitir-link"
+      ],
+      "usage": "${PREFIX}confiavel @usuario | ${PREFIX}confiavel remover @usuario | ${PREFIX}confiavel lista",
+      "description": "Adiciona/remove pessoas que podem enviar links sem levar restrição."
+    },
+    {
+      "category": "admin",
+      "file": "admin/delete.js",
+      "name": "delete",
+      "aliases": [
+        "delete",
+        "d",
+        "apagar",
+        "apaga",
+        "del",
+        "deletar"
+      ],
+      "usage": "${PREFIX}delete (mencione uma mensagem)",
+      "description": "Excluo mensagens"
+    },
+    {
+      "category": "admin",
+      "file": "admin/exit.js",
+      "name": "exit",
+      "aliases": [
+        "exit",
+        "saida"
+      ],
+      "usage": "${PREFIX}exit (1/0)",
+      "description": "Ativo/desativo o recurso de envio de mensagem quando alguém sai do grupo."
+    },
+    {
+      "category": "admin",
+      "file": "admin/fechar.js",
+      "name": "fechar",
+      "aliases": [
+        "fechar",
+        "fecha",
+        "fechar-grupo",
+        "fecha-grupo",
+        "close",
+        "close-group"
+      ],
+      "usage": "${PREFIX}fechar",
+      "description": "Fecha o grupo."
+    },
+    {
+      "category": "admin",
+      "file": "admin/limpar.js",
+      "name": "limparchat",
+      "aliases": [
+        "limparchat",
+        "limpar-chat",
+        "clean-chat",
+        "clean",
+        "clear-chat",
+        "clear",
+        "lc",
+        "limpa-chat",
+        "limpa",
+        "limpar"
+      ],
+      "usage": "${PREFIX}limparchat",
+      "description": "Limpa o histórico de mensagens do grupo."
+    },
+    {
+      "category": "admin",
+      "file": "admin/linkgrupo.js",
+      "name": "linkgrupo",
+      "aliases": [
+        "linkgrupo",
+        "link-grupo",
+        "link-gp"
+      ],
+      "usage": "${PREFIX}linkgrupo",
+      "description": "Obtém o link do grupo"
+    },
+    {
+      "category": "admin",
+      "file": "admin/listagrupo.js",
+      "name": "listagrupo",
+      "aliases": [
+        "listagrupo",
+        "grupos",
+        "meus-grupos",
+        "grupos-ativos",
+        "grupos-on"
+      ],
+      "usage": "${PREFIX}listagrupo",
+      "description": "Lista os grupos ativos e apresenta o respetivo link quando disponível."
+    },
+    {
+      "category": "admin",
+      "file": "admin/mute.js",
+      "name": "mute",
+      "aliases": [
+        "mute",
+        "mutar"
+      ],
+      "usage": "${PREFIX}mute @usuario (ou responda à mensagem) | ${PREFIX}mute @usuario 30m",
+      "description": "Silencia um usuário no grupo (apaga as mensagens dele). Use com tempo opcional (ex: /mute @x 30m) para desilenciar sozinho."
+    },
+    {
+      "category": "admin",
+      "file": "admin/off.js",
+      "name": "off",
+      "aliases": [
+        "off",
+        "bangp"
+      ],
+      "usage": "${PREFIX}off",
+      "description": "Desativa o bot no grupo"
+    },
+    {
+      "category": "admin",
+      "file": "admin/on.js",
+      "name": "on",
+      "aliases": [
+        "on"
+      ],
+      "usage": "${PREFIX}on",
+      "description": "Ativa o bot no grupo"
+    },
+    {
+      "category": "admin",
+      "file": "admin/painel.js",
+      "name": "painel",
+      "aliases": [
+        "painel",
+        "painel-admin",
+        "paineladm",
+        "admin-panel",
+        "adm-panel"
+      ],
+      "usage": "${PREFIX}painel",
+      "description": "Envia no seu privado o painel com o status e os comandos do grupo."
+    },
+    {
+      "category": "admin",
+      "file": "admin/promover.js",
+      "name": "promover",
+      "aliases": [
+        "promover",
+        "promove",
+        "promote",
+        "add-adm"
+      ],
+      "usage": "${PREFIX}promover @usuario",
+      "description": "Promove um usuário a administrador do grupo"
+    },
+    {
+      "category": "admin",
+      "file": "admin/rebaixar.js",
+      "name": "rebaixar",
+      "aliases": [
+        "rebaixar",
+        "rebaixa",
+        "demote"
+      ],
+      "usage": "${PREFIX}rebaixar @usuario",
+      "description": "Rebaixa um administrador para membro comum"
+    },
+    {
+      "category": "admin",
+      "file": "admin/setexit.js",
+      "name": "setexit",
+      "aliases": [
+        "setexit",
+        "set-exit",
+        "set-saida",
+        "mudar-saida"
+      ],
+      "usage": "${PREFIX}setexit <mensagem com @member>",
+      "description": "Altera a mensagem de saída deste grupo."
+    },
+    {
+      "category": "admin",
+      "file": "admin/setname.js",
+      "name": "setname",
+      "aliases": [
+        "setname",
+        "set-name",
+        "setgroupname",
+        "set-group-name",
+        "mudarnome",
+        "mudar-nome-grupo",
+        "nomegrupo",
+        "nome-grupo"
+      ],
+      "usage": "${PREFIX}setname novo nome do grupo",
+      "description": "Altera o nome do grupo e guarda o nome anterior."
+    },
+    {
+      "category": "admin",
+      "file": "admin/setwelcome.js",
+      "name": "setwelcome",
+      "aliases": [
+        "setwelcome",
+        "set-welcome",
+        "set-bemvindo",
+        "set-boasvindas",
+        "mudar-boasvindas"
+      ],
+      "usage": "${PREFIX}setwelcome <mensagem com @member>",
+      "description": "Altera a mensagem de boas-vindas deste grupo."
+    },
+    {
+      "category": "admin",
+      "file": "admin/unmute.js",
+      "name": "unmute",
+      "aliases": [
+        "unmute",
+        "desmutar"
+      ],
+      "usage": "${PREFIX}unmute @usuario",
+      "description": "Desativa o mute de um membro do grupo"
+    },
+    {
+      "category": "admin",
+      "file": "admin/unwarn.js",
+      "name": "unwarn",
+      "aliases": [
+        "unwarn",
+        "perdoaradvertência",
+        "perdoaradvt",
+        "removeradvertencia",
+        "advtremove"
+      ],
+      "usage": "(sem usage)",
+      "description": "Remove ou lista advertências válidas."
+    },
+    {
+      "category": "admin",
+      "file": "admin/warn.js",
+      "name": "warn",
+      "aliases": [
+        "warn",
+        "advertir",
+        "adverter",
+        "advt"
+      ],
+      "usage": "(sem usage)",
+      "description": "Aplica advertência a um membro."
+    },
+    {
+      "category": "admin",
+      "file": "admin/warnreactivate.js",
+      "name": "warnreactivate",
+      "aliases": [
+        "warnreactivate",
+        "warn-reactivate",
+        "reativarwarn",
+        "reativaradvertencia",
+        "reativaradvt"
+      ],
+      "usage": "(sem usage)",
+      "description": "Reativa uma advertência inválida."
+    },
+    {
+      "category": "admin",
+      "file": "admin/welcome.js",
+      "name": "welcome",
+      "aliases": [
+        "welcome",
+        "bemvindo",
+        "boasvinda",
+        "boasvindas",
+        "boavinda",
+        "boavindas",
+        "welkom",
+        "welkon"
+      ],
+      "usage": "${PREFIX}welcome (1/0)",
+      "description": "Ativo/desativo o recurso de boas-vindas no grupo."
+    },
+    {
+      "category": "member",
+      "file": "member/help.js",
+      "name": "help",
+      "aliases": [
+        "help",
+        "ajuda",
+        "comandos",
+        "menu-help",
+        "explicar"
+      ],
+      "usage": "${PREFIX}help [comando]",
+      "description": "Apresenta todos os comandos, a forma de utilização e as permissões."
+    },
+    {
+      "category": "member",
+      "file": "member/menu.js",
+      "name": "menu",
+      "aliases": [
+        "menu"
+      ],
+      "usage": "${PREFIX}menu",
+      "description": "Abre o menu completo de comandos do bot."
+    },
+    {
+      "category": "member",
+      "file": "member/meulid.js",
+      "name": "meulid",
+      "aliases": [
+        "meulid",
+        "meu-lid",
+        "my-lid",
+        "lid"
+      ],
+      "usage": "${PREFIX}meulid",
+      "description": "Retorna o LID da pessoa"
+    },
+    {
+      "category": "member",
+      "file": "member/ping.js",
+      "name": "ping",
+      "aliases": [
+        "ping",
+        "pong"
+      ],
+      "usage": "${PREFIX}ping",
+      "description": "Verificar se o bot está online, o tempo de resposta e o tempo de atividade."
+    },
+    {
+      "category": "owner",
+      "file": "owner/adm.js",
+      "name": "adm",
+      "aliases": [
+        "adm",
+        "autorizados",
+        "liberar-comandos",
+        "admin-bot",
+        "adminbot"
+      ],
+      "usage": "${PREFIX}adm | ${PREFIX}adm @usuario | ${PREFIX}adm rm @usuario",
+      "description": "Painel de quem pode usar os comandos do bot no grupo (só o dono gerencia)."
+    },
+    {
+      "category": "owner",
+      "file": "owner/setprefix.js",
+      "name": "setprefix",
+      "aliases": [
+        "setprefix",
+        "set-prefix",
+        "altera-prefix",
+        "altera-prefixo",
+        "alterar-prefix",
+        "alterar-prefixo",
+        "muda-prefix",
+        "muda-prefixo",
+        "mudar-prefix",
+        "mudar-prefixo",
+        "set-prefixo"
+      ],
+      "usage": "${PREFIX}setprefix =",
+      "description": "Mudo o prefixo de uso dos meus comandos"
+    }
+  ],
+  "duplicates": [
+    [
+      "antilink",
+      [
+        "admin/admin/antilink.js:antilink",
+        "admin/admin/antilink.js:anti-link"
+      ]
+    ],
+    [
+      "antilinks",
+      [
+        "admin/admin/antilink.js:antilinks",
+        "admin/admin/antilink.js:anti-links"
+      ]
+    ],
+    [
+      "blockwpp",
+      [
+        "admin/admin/blockwpp.js:blockwpp",
+        "admin/admin/blockwpp.js:block-wpp"
+      ]
+    ],
+    [
+      "limparchat",
+      [
+        "admin/admin/limpar.js:limparchat",
+        "admin/admin/limpar.js:limpar-chat"
+      ]
+    ],
+    [
+      "linkgrupo",
+      [
+        "admin/admin/linkgrupo.js:linkgrupo",
+        "admin/admin/linkgrupo.js:link-grupo"
+      ]
+    ],
+    [
+      "setexit",
+      [
+        "admin/admin/setexit.js:setexit",
+        "admin/admin/setexit.js:set-exit"
+      ]
+    ],
+    [
+      "setname",
+      [
+        "admin/admin/setname.js:setname",
+        "admin/admin/setname.js:set-name"
+      ]
+    ],
+    [
+      "setgroupname",
+      [
+        "admin/admin/setname.js:setgroupname",
+        "admin/admin/setname.js:set-group-name"
+      ]
+    ],
+    [
+      "nomegrupo",
+      [
+        "admin/admin/setname.js:nomegrupo",
+        "admin/admin/setname.js:nome-grupo"
+      ]
+    ],
+    [
+      "setwelcome",
+      [
+        "admin/admin/setwelcome.js:setwelcome",
+        "admin/admin/setwelcome.js:set-welcome"
+      ]
+    ],
+    [
+      "warnreactivate",
+      [
+        "admin/admin/warnreactivate.js:warnreactivate",
+        "admin/admin/warnreactivate.js:warn-reactivate"
+      ]
+    ],
+    [
+      "meulid",
+      [
+        "member/member/meulid.js:meulid",
+        "member/member/meulid.js:meu-lid"
+      ]
+    ],
+    [
+      "adminbot",
+      [
+        "owner/owner/adm.js:admin-bot",
+        "owner/owner/adm.js:adminbot"
+      ]
+    ],
+    [
+      "setprefix",
+      [
+        "owner/owner/setprefix.js:setprefix",
+        "owner/owner/setprefix.js:set-prefix"
+      ]
+    ]
+  ],
+  "inversePairs": [
+    {
+      "a": "abrir",
+      "b": "fechar",
+      "aFound": true,
+      "bFound": true
+    },
+    {
+      "a": "on",
+      "b": "off",
+      "aFound": true,
+      "bFound": true
+    },
+    {
+      "a": "mute",
+      "b": "unmute",
+      "aFound": true,
+      "bFound": true
+    },
+    {
+      "a": "warn",
+      "b": "unwarn",
+      "aFound": true,
+      "bFound": true
+    },
+    {
+      "a": "welcome",
+      "b": "exit",
+      "aFound": true,
+      "bFound": true
+    },
+    {
+      "a": "promover",
+      "b": "rebaixar",
+      "aFound": true,
+      "bFound": true
+    },
+    {
+      "a": "antilink",
+      "b": "confiavel",
+      "aFound": true,
+      "bFound": true
+    },
+    {
+      "a": "setwelcome",
+      "b": "setexit",
+      "aFound": true,
+      "bFound": true
+    }
+  ]
+}

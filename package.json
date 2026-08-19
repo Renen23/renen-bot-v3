@@ -1,0 +1,20 @@
+{
+  "name": "renen-bot",
+  "version": "1.0.0",
+  "description": "Bot de WhatsApp de moderação (boas-vindas, banir, advertir, mutar) organizado para o Renen Bot.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "engines": {
+    "node": ">=22.8.0"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "baileys": "7.0.0-rc14",
+    "dotenv": "^17.4.2",
+    "node-cache": "^5.1.2",
+    "pino": "^10.3.1"
+  }
+}
