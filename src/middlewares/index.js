@@ -48,21 +48,24 @@ export function isBotOwner({ userLid, webMessage }) {
   return onlyNumbers(userLid) === onlyNumbers(OWNER_LID);
 }
 
-export async function checkPermission({ type, userLid, remoteJid, webMessage }) {
+export async function checkPermission({ type, userLid, remoteJid, webMessage, socket }) {
   if (webMessage?.key?.fromMe) {
     return true;
   }
 
-  if (onlyNumbers(userLid) === onlyNumbers(OWNER_LID)) {
+  const ownerConfigured = OWNER_LID && !OWNER_LID.includes("SEU_LID");
+
+  if (ownerConfigured && onlyNumbers(userLid) === onlyNumbers(OWNER_LID)) {
     return true;
   }
 
   if (type === "owner") {
+    if (!ownerConfigured) {
+      return await isAdmin({ remoteJid, userLid, socket });
+    }
     return false;
   }
 
-  // Comandos da categoria member são públicos dentro de grupos ativos.
-  // Ações administrativas continuam protegidas pelo cadastro de admins.
   if (type === "member") {
     return true;
   }
