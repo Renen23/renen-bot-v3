@@ -27,6 +27,7 @@ export default {
       const participants = metadata.participants || [];
 
       const fakes = participants.filter((p) => {
+        if (!p.id.endsWith("@s.whatsapp.net")) return false;
         const number = onlyNumbers(p.id);
         return number.length > 0 && !number.startsWith("55");
       });
@@ -60,7 +61,7 @@ export default {
 
       await socket.groupParticipantsUpdate(
         remoteJid,
-        fakeIds.map((num) => `${num}@lid`),
+        fakeIds.map((num) => `${num}@s.whatsapp.net`),
         "remove",
       );
     } catch (error) {
