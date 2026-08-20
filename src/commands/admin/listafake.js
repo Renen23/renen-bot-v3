@@ -26,6 +26,8 @@ export default {
       const metadata = await socket.groupMetadata(remoteJid);
       const participants = metadata.participants || [];
 
+      console.log("[LISTAFAKE] Participantes:", participants.map(p => p.id));
+
       const fakes = [];
 
       for (const p of participants) {
@@ -35,6 +37,7 @@ export default {
           number = onlyNumbers(p.id);
         } else if (p.id.endsWith("@lid")) {
           const lidInfo = getLidInfo(p.id);
+          console.log("[LISTAFAKE] LID:", p.id, "resolved:", lidInfo);
           if (lidInfo?.phoneNumber) {
             number = lidInfo.phoneNumber;
           }
