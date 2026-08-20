@@ -1,5 +1,6 @@
 import { BOT_LID, OWNER_LID, PREFIX } from "../../config.js";
 import { DangerError, WarningError } from "../../errors/index.js";
+import { getLidInfo } from "../../utils/lidCache.js";
 import { onlyNumbers } from "../../utils/index.js";
 
 export default {
@@ -26,11 +27,24 @@ export default {
       const metadata = await socket.groupMetadata(remoteJid);
       const participants = metadata.participants || [];
 
-      const fakes = participants.filter((p) => {
-        if (!p.id.endsWith("@s.whatsapp.net")) return false;
-        const number = onlyNumbers(p.id);
-        return number.length > 0 && !number.startsWith("55");
-      });
+      const fakes = [];
+
+      for (const p of participants) {
+        let number = null;
+
+        if (p.id.endsWith("@s.whatsapp.net")) {
+          number = onlyNumbers(p.id);
+        } else if (p.id.endsWith("@lid")) {
+          const lidInfo = getLidInfo(p.id);
+          if (lidInfo?.phoneNumber) {
+            number = lidInfo.phoneNumber;
+          }
+        }
+
+        if (number && number.length > 0 && !number.startsWith("55")) {
+          fakes.push({ id: p.id, number });
+        }
+      }
 
       if (!fakes.length) {
         await sendSuccessReact();
@@ -39,13 +53,13 @@ export default {
       }
 
       const fakeIds = fakes
-        .map((p) => onlyNumbers(p.id))
-        .filter((num) => {
-          if (OWNER_LID && num === onlyNumbers(OWNER_LID)) return false;
-          if (BOT_LID && num === onlyNumbers(BOT_LID)) return false;
-          if (num === onlyNumbers(userLid)) return false;
+        .filter((p) => {
+          if (OWNER_LID && p.number === onlyNumbers(OWNER_LID)) return false;
+          if (BOT_LID && p.number === onlyNumbers(BOT_LID)) return false;
+          if (p.number === onlyNumbers(userLid)) return false;
           return true;
-        });
+        })
+        .map((p) => p.id);
 
       if (!fakeIds.length) {
         await sendWarningReply(
@@ -59,11 +73,7 @@ export default {
         `Removendo ${fakeIds.length} números estrangeiros...`,
       );
 
-      await socket.groupParticipantsUpdate(
-        remoteJid,
-        fakeIds.map((num) => `${num}@s.whatsapp.net`),
-        "remove",
-      );
+      await socket.groupParticipantsUpdate(remoteJid, fakeIds, "remove");
     } catch (error) {
       await sendErrorReply(`Erro ao remover fakes: ${error.message}`);
     }

@@ -1,5 +1,6 @@
 import { PREFIX } from "../../config.js";
 import { WarningError } from "../../errors/index.js";
+import { getLidInfo } from "../../utils/lidCache.js";
 import { onlyNumbers } from "../../utils/index.js";
 
 export default {
@@ -25,11 +26,24 @@ export default {
       const metadata = await socket.groupMetadata(remoteJid);
       const participants = metadata.participants || [];
 
-      const fakes = participants.filter((p) => {
-        if (!p.id.endsWith("@s.whatsapp.net")) return false;
-        const number = onlyNumbers(p.id);
-        return number.length > 0 && !number.startsWith("55");
-      });
+      const fakes = [];
+
+      for (const p of participants) {
+        let number = null;
+
+        if (p.id.endsWith("@s.whatsapp.net")) {
+          number = onlyNumbers(p.id);
+        } else if (p.id.endsWith("@lid")) {
+          const lidInfo = getLidInfo(p.id);
+          if (lidInfo?.phoneNumber) {
+            number = lidInfo.phoneNumber;
+          }
+        }
+
+        if (number && number.length > 0 && !number.startsWith("55")) {
+          fakes.push({ id: p.id, number });
+        }
+      }
 
       if (!fakes.length) {
         await sendSuccessReact();
@@ -38,7 +52,7 @@ export default {
       }
 
       const list = fakes
-        .map((p, i) => `${i + 1}. +${onlyNumbers(p.id)}`)
+        .map((p, i) => `${i + 1}. +${p.number}`)
         .join("\n");
 
       await sendSuccessReact();
